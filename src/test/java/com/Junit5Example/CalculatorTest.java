@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculatorTest {
 private Calculator calculator;
@@ -38,5 +39,9 @@ public void testSubtraction(){
     public void testFactorial(){
        int result=calculator.myFactorial(5);
        assertEquals(120, result,"The Factorial result should be 120");
+       result=calculator.myFactorial(0);
+       assertEquals(1, result,"The Factorial of 0 result should be 1");
+       result=calculator.myFactorial(-1);
+       assertThrows(IllegalArgumentException.class,()->calculator.myFactorial(-1),"Factorial of negative numbers should throw an IllegalArgumentException");
 }
 }
